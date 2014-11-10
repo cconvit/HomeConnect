@@ -3,6 +3,7 @@
 var http = require('http');
 var express = require('express');
 var kraken = require('kraken-js');
+var arduino = require('./lib/Arduino');
 
 
 var options, app, server;
@@ -17,7 +18,9 @@ options = {
          * Add any additional config setup or overrides here. `config` is an initialized
          * `confit` (https://github.com/krakenjs/confit/) configuration object.
          */
-        next(null, config);
+         global.app_config=config.get('app_config');
+         //arduino.initArduino();
+         next(null, config);
     }
 };
 

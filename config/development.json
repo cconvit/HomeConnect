@@ -1,5 +1,14 @@
 {
-    
+    "app_config":{
+                    "arduino":{
+                                "port":"/dev/tty.usbserial-A6008bAp"
+
+                    },
+                    "x10":{
+                                "repeat":"02"
+
+                    }
+    },
     "express": {
         "view cache": false,
         "view engine": "dust",
@@ -25,7 +34,17 @@
     },
 
     "middleware": {
-
+    "appsec": {
+            "module": {
+                "arguments": [
+                    {
+                        "xframe": "SAMEORIGIN",
+                        "p3p": false,
+                        "csp": false
+                    }
+                ]
+            }
+        },
         "devtools": {
             "enabled": true,
             "priority": 35,
@@ -34,7 +53,7 @@
                 "arguments": [
                     "path:./public",
                     "path:./.build",
-                    {   
+                    {
                         "template": {
                             "module": "kraken-devtools/plugins/dustjs",
                             "files": "/templates/**/*.js",

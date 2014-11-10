@@ -1,18 +1,21 @@
 'use strict';
 
+module.exports = function(app) {
 
-var IndexModel = require('../models/index');
+    /*******************X10 Commands*****************/
 
+    var X10Lib = require('../lib/X10Lib');
 
-module.exports = function (router) {
-
-    var model = new IndexModel();
-
-
-    router.get('/', function (req, res) {
-        
-        res.render('index', model);
-        
+    app.post('/x10/send', function(req, res) {
+console.log("prueba");
+        X10Lib.SendCommand(req, res);
     });
 
+    /*******************ACCOUNT*****************/
+
+  app.get('/x10/send', function (req, res) {
+
+        res.render('index', {});
+
+    });
 };
